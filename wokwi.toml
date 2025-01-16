@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/GPIO-Teclado.uf2"
+elf = "build/GPIO-Teclado.elf"
