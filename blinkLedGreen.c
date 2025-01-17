@@ -16,12 +16,16 @@ void initLed(){
 //Função para ligar o LED
 void ledOn(){
     gpio_put(LED_GREEN_PIN, 1);
-    sleep_ms(1000);
+    printf("\nLed Verde Acesso");
+    sleep_ms(2000);
+    gpio_put(LED_GREEN_PIN, 0);
+    printf("\nLed Verde Apagado");
 }
 
 
 int main(){
-
+    
+    printf("\nLed Verde Iniciado");
     initLed();
     
 }
