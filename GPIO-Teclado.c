@@ -1,6 +1,11 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
+#include "blinkLedGreen.c" 
+
+// Variável para controlar estado do LED
+bool ledStatus = false;
+
 // Definições dos pinos do teclado
 #define LINHAS 4
 #define COLUNAS 4
@@ -55,6 +60,16 @@ int main() {
         char tecla = ler_teclado();
         if (tecla != '\0') {
             printf("Tecla pressionada: %c\n", tecla); // Exibe a tecla no terminal
+
+            if(tecla == 'A'){
+                if(ledStatus){ // Led Acesso
+                    ledOff();
+                }else{ // Led Ligado
+                    ledOn();
+                }
+                ledStatus = !ledStatus; //Alternância de estado do LED
+            }
+
             sleep_ms(300); // Debounce (evita leituras múltiplas)
         }
         sleep_ms(10); 
