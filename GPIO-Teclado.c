@@ -1,6 +1,21 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
+// Declarações das funções do LED azul
+extern void setup();
+extern void ligar_led();
+extern void desligar_led();
+
+// Declarações das funções do LED vermelho
+extern void setupRed();
+extern void ligar_ledRed();
+extern void desligar_ledRed();
+
+// Declarações das funções do LED verde
+extern void initLed();
+extern void ledOn();
+extern void ledOff();
+
 // Definições dos pinos do teclado
 #define LINHAS 4
 #define COLUNAS 4
@@ -48,6 +63,9 @@ char ler_teclado() {
 int main() {
     stdio_init_all(); 
     configurar_teclado();
+    setup();  // Configura o LED azul
+    setupRed();  // Configura o LED vermelho
+    initLed(); // Configura o LED verde
 
     printf("Teste do teclado iniciado. Pressione uma tecla...\n");
 
@@ -55,8 +73,37 @@ int main() {
         char tecla = ler_teclado();
         if (tecla != '\0') {
             printf("Tecla pressionada: %c\n", tecla); // Exibe a tecla no terminal
+
+            // Verifica se a tecla pressionada é 'C' (LED azul)
+            if (tecla == 'C') {
+                printf("Ligando o LED azul...\n");
+                ligar_led(); // Liga o LED azul
+                sleep_ms(1000); // Mantém o LED azul ligado por 1 segundo
+                desligar_led(); // Desliga o LED azul
+                printf("LED azul desligado.\n");
+            }
+
+            // Verifica se a tecla pressionada é 'B' (LED Vermelho)
+            if (tecla == 'B') {
+                printf("Ligando o LED vermelho...\n");
+                ligar_ledRed(); // Liga o LED vermelho
+                sleep_ms(1000); // Mantém o LED vermelho ligado por 1 segundo
+                desligar_ledRed(); // Desliga o LED vermelho
+                printf("LED vermelho desligado.\n");
+            }
+
+            // Verifica se a tecla pressionada é 'A' (LED verde)
+            if (tecla == 'A') {
+                printf("Ligando o LED verde...\n");
+                ledOn(); // Liga o LED verde
+                sleep_ms(1000); // Mantém o LED verde ligado por 1 segundo
+                ledOff(); // Desliga o LED verde
+                printf("LED verde desligado.\n");
+            }
+
             sleep_ms(300); // Debounce (evita leituras múltiplas)
         }
+
         sleep_ms(10); 
     }
 }

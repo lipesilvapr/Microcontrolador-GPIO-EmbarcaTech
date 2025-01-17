@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(GPIO-Teclado GPIO-Teclado.c Leds_Ao_Mesmo_Tempo.c )
+add_executable(GPIO-Teclado GPIO-Teclado.c blinkBlueLed-Caique.c blinkLedGreen.c blinkRedLed.c)
 
 pico_set_program_name(GPIO-Teclado "GPIO-Teclado")
 pico_set_program_version(GPIO-Teclado "0.1")
