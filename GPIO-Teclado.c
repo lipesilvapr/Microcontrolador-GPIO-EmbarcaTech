@@ -6,6 +6,11 @@ extern void setup();
 extern void ligar_led();
 extern void desligar_led();
 
+// Declarações das funções do LED vermelho
+extern void setupRed();
+extern void ligar_ledRed();
+extern void desligar_ledRed();
+
 // Declarações das funções do LED verde
 extern void initLed();
 extern void ledOn();
@@ -59,6 +64,7 @@ int main() {
     stdio_init_all(); 
     configurar_teclado();
     setup();  // Configura o LED azul
+    setupRed();  // Configura o LED vermelho
     initLed(); // Configura o LED verde
 
     printf("Teste do teclado iniciado. Pressione uma tecla...\n");
@@ -75,6 +81,15 @@ int main() {
                 sleep_ms(1000); // Mantém o LED azul ligado por 1 segundo
                 desligar_led(); // Desliga o LED azul
                 printf("LED azul desligado.\n");
+            }
+
+            // Verifica se a tecla pressionada é 'B' (LED Vermelho)
+            if (tecla == 'B') {
+                printf("Ligando o LED vermelho...\n");
+                ligar_ledRed(); // Liga o LED vermelho
+                sleep_ms(1000); // Mantém o LED vermelho ligado por 1 segundo
+                desligar_ledRed(); // Desliga o LED vermelho
+                printf("LED vermelho desligado.\n");
             }
 
             // Verifica se a tecla pressionada é 'A' (LED verde)
