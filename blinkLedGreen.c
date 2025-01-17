@@ -12,6 +12,14 @@ void initLed(){
 
 }
 
+
+//Função para ligar o LED
+void ledOn(){
+    gpio_put(LED_GREEN_PIN, 1);
+    sleep_ms(1000);
+}
+
+
 int main(){
 
     initLed();
