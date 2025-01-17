@@ -3,6 +3,7 @@
 
 
 #define LED_GREEN_PIN 11
+bool ledStatus = false;
 
 //Função para configuração do LED
 void initLed(){
@@ -12,14 +13,16 @@ void initLed(){
 
 }
 
-
 //Função para ligar o LED
 void ledOn(){
     gpio_put(LED_GREEN_PIN, 1);
-    printf("\nLed Verde Acesso");
-    sleep_ms(2000);
+    printf("\nLed Verde Acesso.\n");
+}
+
+//Função para desligar o LED
+void ledOff(){
     gpio_put(LED_GREEN_PIN, 0);
-    printf("\nLed Verde Apagado");
+    printf("\nLede Verde Desligado.\n");
 }
 
 
