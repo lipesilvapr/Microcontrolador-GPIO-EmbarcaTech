@@ -23,11 +23,3 @@ void ledOff(){
     gpio_put(LED_GREEN_PIN, 0);
     printf("\nLede Verde Desligado.\n");
 }
-
-
-int main(){
-    
-    printf("\nLed Verde Iniciado");
-    initLed();
-    
-}

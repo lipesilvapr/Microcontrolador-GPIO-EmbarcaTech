@@ -1,10 +1,15 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
-// Declarações das funções do LED
+// Declarações das funções do LED azul
 extern void setup();
 extern void ligar_led();
 extern void desligar_led();
+
+// Declarações das funções do LED verde
+extern void initLed();
+extern void ledOn();
+extern void ledOff();
 
 // Definições dos pinos do teclado
 #define LINHAS 4
@@ -53,7 +58,8 @@ char ler_teclado() {
 int main() {
     stdio_init_all(); 
     configurar_teclado();
-    setup();  // Configura o LED
+    setup();  // Configura o LED azul
+    initLed(); // Configura o LED verde
 
     printf("Teste do teclado iniciado. Pressione uma tecla...\n");
 
@@ -62,13 +68,22 @@ int main() {
         if (tecla != '\0') {
             printf("Tecla pressionada: %c\n", tecla); // Exibe a tecla no terminal
 
-            // Verifica se a tecla pressionada é 'C'
+            // Verifica se a tecla pressionada é 'C' (LED azul)
             if (tecla == 'C') {
                 printf("Ligando o LED azul...\n");
-                ligar_led(); // Liga o LED
-                sleep_ms(1000); // Mantém o LED ligado por 1 segundo
-                desligar_led(); // Desliga o LED
+                ligar_led(); // Liga o LED azul
+                sleep_ms(1000); // Mantém o LED azul ligado por 1 segundo
+                desligar_led(); // Desliga o LED azul
                 printf("LED azul desligado.\n");
+            }
+
+            // Verifica se a tecla pressionada é 'A' (LED verde)
+            if (tecla == 'A') {
+                printf("Ligando o LED verde...\n");
+                ledOn(); // Liga o LED verde
+                sleep_ms(1000); // Mantém o LED verde ligado por 1 segundo
+                ledOff(); // Desliga o LED verde
+                printf("LED verde desligado.\n");
             }
 
             sleep_ms(300); // Debounce (evita leituras múltiplas)
