@@ -1,6 +1,11 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
+// Declarações das funções do LED
+extern void setup();
+extern void ligar_led();
+extern void desligar_led();
+
 // Definições dos pinos do teclado
 #define LINHAS 4
 #define COLUNAS 4
@@ -48,6 +53,7 @@ char ler_teclado() {
 int main() {
     stdio_init_all(); 
     configurar_teclado();
+    setup();  // Configura o LED
 
     printf("Teste do teclado iniciado. Pressione uma tecla...\n");
 
@@ -55,8 +61,19 @@ int main() {
         char tecla = ler_teclado();
         if (tecla != '\0') {
             printf("Tecla pressionada: %c\n", tecla); // Exibe a tecla no terminal
+
+            // Verifica se a tecla pressionada é 'C'
+            if (tecla == 'C') {
+                printf("Ligando o LED azul...\n");
+                ligar_led(); // Liga o LED
+                sleep_ms(1000); // Mantém o LED ligado por 1 segundo
+                desligar_led(); // Desliga o LED
+                printf("LED azul desligado.\n");
+            }
+
             sleep_ms(300); // Debounce (evita leituras múltiplas)
         }
+
         sleep_ms(10); 
     }
 }
