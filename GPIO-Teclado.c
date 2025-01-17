@@ -16,6 +16,10 @@ extern void initLed();
 extern void ledOn();
 extern void ledOff();
 
+//Declarações das funções dos leds juntos
+extern void BlinkLeds();
+extern void initLeds();
+
 // Definições dos pinos do teclado
 #define LINHAS 4
 #define COLUNAS 4
@@ -66,6 +70,7 @@ int main() {
     setup();  // Configura o LED azul
     setupRed();  // Configura o LED vermelho
     initLed(); // Configura o LED verde
+    initLeds();// Configura o blink de todos os leds ao mesmo tempo
 
     printf("Teste do teclado iniciado. Pressione uma tecla...\n");
 
@@ -101,6 +106,10 @@ int main() {
                 printf("LED verde desligado.\n");
             }
 
+            // Verifica se a tecla pressionada é '1' (todos os leds)
+            if(tecla == '1') {
+                BlinkLeds();
+            }
             sleep_ms(300); // Debounce (evita leituras múltiplas)
         }
 
