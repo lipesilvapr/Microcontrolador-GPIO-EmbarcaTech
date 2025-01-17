@@ -3,7 +3,6 @@
 
 
 #define LED_GREEN_PIN 11
-bool ledStatus = false;
 
 //Função para configuração do LED
 void initLed(){
