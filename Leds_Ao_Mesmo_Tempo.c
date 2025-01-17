@@ -1,37 +1,34 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
-#define Led_Green_Pin 11
-#define Led_Blue_Pin 12
-#define Led_Red_Pin 13
+#define led_pin_red 13
+#define led_pin_blue 12
+#define led_pin_green 11
 
-const TimeOn = 500;
-const TimeOff = 500;
+const int tempo = 500;
 
-// Função de setup dos leds
-void initLeds (){
-   
-    gpio_init(Led_Green_Pin);
-    gpio_init(Led_Blue_Pin);
-    gpio_init(Led_Red_Pin);
-
-    gpio_set_dir(Led_Green_Pin, GPIO_OUT);
-    gpio_set_dir(Led_Blue_Pin, GPIO_OUT);
-    gpio_set_dir(Led_Red_Pin, GPIO_OUT);
-
+//Blink dos Leds 
+void BlinkLeds(){
+      gpio_put(led_pin_red, true);
+      gpio_put(led_pin_blue, true);
+      gpio_put(led_pin_green, true);
+      sleep_ms(tempo);
+      gpio_put(led_pin_red, false);
+      gpio_put(led_pin_blue, false);
+      gpio_put(led_pin_green, false);
+      sleep_ms(tempo);
 }
 
-void BlinkLeds (){
+//Inicialização do Led
+void initLeds(){
+  gpio_init(led_pin_red);
+  gpio_init(led_pin_blue);
+  gpio_init(led_pin_green);
+  printf("\n Led ON!!!");
 
-    gpio_put(Led_Green_Pin, 1);
-    gpio_put(Led_Blue_Pin, 1);
-    gpio_put(Led_Red_Pin, 1);
-    printf("\n Leds ON.");
-    sleep_ms(TimeOn);
-
-    gpio_put(Led_Green_Pin, 0);
-    gpio_put(Led_Blue_Pin, 0);
-    gpio_put(Led_Red_Pin, 0);
-    printf("\n Leds OFF.");
-    sleep_ms(TimeOff);
+  gpio_set_dir(led_pin_red, GPIO_OUT);
+  gpio_set_dir(led_pin_blue, GPIO_OUT);
+  gpio_set_dir(led_pin_green, GPIO_OUT);
+  printf("\n Led OFF!!!");
 }
+
