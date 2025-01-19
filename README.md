@@ -3,6 +3,9 @@
 ## Descrição do Projeto
 Este projeto implementa um sistema de controle para LEDs (verde, vermelho, azul) e um buzzer usando um microcontrolador. O código permite que o usuário interaja com o sistema através de um teclado matricial (4x4), acionando os dispositivos com diferentes teclas. O objetivo é simular o funcionamento em um ambiente virtual usando o [Wokwi Simulator](https://wokwi.com/).
 
+## Vídeo de apresentação
+Aqui está o link do [Video](https://drive.google.com/file/d/1QJuJ5Bnrre6JU4n6HrVf25JwRHveslSv/view?usp=drive_link)  de apresentação da atividade.
+
 ## Estrutura do Projeto
 A estrutura do projeto conta com:
 - Um **arquivo principal**, responsável por centralizar a execução do código e gerenciar as interações com os dispositivos.
